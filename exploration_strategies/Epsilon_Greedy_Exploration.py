@@ -46,10 +46,10 @@ class Epsilon_Greedy_Exploration(Base_Exploration_Strategy):
         #     epsilon = epsilon / (1.0 + (episode_number / epsilon_decay_denominator))
         # else:
         #     epsilon = self.calculate_epsilon_with_cyclical_strategy(episode_number)
-        if episode_number == 0 :
+        if episode_number == 0:
             return 1
 
-        return min(1, 10/episode_number) # dynamic epsilon
+        return min(1, 10/episode_number) # dynamic epsilon HELLO THIS IS A CHANGE TO A COMMENT
 
     def calculate_epsilon_with_cyclical_strategy(self, episode_number):
         """Calculates epsilon according to a cyclical strategy"""
