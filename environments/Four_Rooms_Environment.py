@@ -14,9 +14,9 @@ class Four_Rooms_Environment(gym.Env):
     """Four rooms game environment as described in paper http://www-anw.cs.umass.edu/~barto/courses/cs687/Sutton-Precup-Singh-AIJ99.pdf"""
     environment_name = "Four Rooms"
 
-    def __init__(self, grid_width=13, grid_height=13, stochastic_actions_probability=1.0/3.0, random_start_user_place=True,
+    def __init__(self, grid_width=6, grid_height=6, stochastic_actions_probability=1.0/3.0, random_start_user_place=True,
                  random_goal_place=True):
-        assert grid_width >= 9 and grid_height >= 9, "Both grid height and width must be 9 or higher"
+       # assert grid_width >= 9 and grid_height >= 9, "Both grid height and width must be 9 or higher"
         self.grid_width = grid_width
         self.grid_height = grid_height
         self.random_start_user_place = random_start_user_place
@@ -170,20 +170,15 @@ class Four_Rooms_Environment(gym.Env):
         row = state - col*self.grid_height
         return (row, col)
 
-    def create_grid(self):
+    def create_grid(self):  #This creates a one room environement since the center walls are broken
         """Creates and returns the initial gridworld"""
         grid = [[self.blank_space_name for _ in range(self.grid_width)] for _ in range(self.grid_height)]
-        centre_col = int(self.grid_width / 2)
-        centre_row = int(self.grid_height / 2)
-        gaps = [(centre_row, int(centre_col / 2) - 1),  (centre_row, centre_col + int(centre_col / 2)),
-                 (int(centre_row/2), centre_col),(centre_row + int(centre_row/2) + 1, centre_col)]
+
         for row in range(self.grid_height):
             for col in range(self.grid_width):
                 if row == 0 or col == 0 or row == self.grid_height - 1 or col == self.grid_width - 1:
                     grid[row][col] = self.wall_space_name
-                if row == centre_row or col == centre_col:
-                    grid[row][col] = self.wall_space_name
-                if (row , col) in gaps:
+                else:
                     grid[row][col] = self.blank_space_name
         return grid
 

@@ -42,11 +42,14 @@ class Epsilon_Greedy_Exploration(Base_Exploration_Strategy):
         episode_number = action_info["episode_number"]
         epsilon_decay_denominator = self.config.hyperparameters["epsilon_decay_rate_denominator"]
 
-        if self.exploration_cycle_episodes_length is None:
-            epsilon = epsilon / (1.0 + (episode_number / epsilon_decay_denominator))
-        else:
-            epsilon = self.calculate_epsilon_with_cyclical_strategy(episode_number)
-        return epsilon
+        # if self.exploration_cycle_episodes_length is None:
+        #     epsilon = epsilon / (1.0 + (episode_number / epsilon_decay_denominator))
+        # else:
+        #     epsilon = self.calculate_epsilon_with_cyclical_strategy(episode_number)
+        if episode_number == 0 :
+            return 1
+
+        return min(1, 10/episode_number) # dynamic epsilon
 
     def calculate_epsilon_with_cyclical_strategy(self, episode_number):
         """Calculates epsilon according to a cyclical strategy"""

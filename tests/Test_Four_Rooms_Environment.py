@@ -21,6 +21,8 @@ def test_actions_execute_correctly():
     env.reset()
     env.move_user(env.current_user_location, (3, 3))
 
+    env.print_current_grid()
+
     env.step(0)
     assert env.current_user_location == (2, 3)
 
@@ -45,11 +47,11 @@ def test_actions_execute_correctly():
     env.step(1)
     assert env.current_user_location == (1, 4)
 
-    env.step(1)
-    assert env.current_user_location == (1, 5)
+    #env.step(1)
+    #assert env.current_user_location == (1, 5)
 
-    env.step(1)
-    assert env.current_user_location == (1, 5)
+    #env.step(1)
+    #assert env.current_user_location == (1, 5)
 
 def test_check_user_location_and_goal_location_match_state_and_next_state():
     """Checks whether user location always matches state and next state correctly"""
@@ -128,3 +130,4 @@ def test_randomness_of_moves():
             assert abs((num_iterations / len(env.actions)) - count[move_test]) < num_iterations / 20.0, "{}".format(count)
 
 
+test_actions_execute_correctly()

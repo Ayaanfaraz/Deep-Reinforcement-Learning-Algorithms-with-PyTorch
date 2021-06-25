@@ -8,7 +8,7 @@ trainer = Trainer(config=Config(), agents=None)
 
 #
 # trainer.visualise_set_of_preexisting_results(save_image_path="Four_Rooms_and_Long_Corridor.png", results_data_paths=["Long_Corridor_Results_Data.pkl", "Four_Rooms.pkl"],
-#                                       plot_titles=["Long Corridor", "Four Rooms"], y_limits=[(0.0, 0.25), (-90.0, 100.25)])
+#                                       plot_titles=["Long Corridor", "One Room"], y_limits=[(0.0, 0.25), (-90.0, 100.25)])
 
 
 

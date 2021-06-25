@@ -1,4 +1,4 @@
-from agents.DQN_agents.DDQN import DDQN
+from agents.DQN_agents.DQN import DQN
 from environments.Four_Rooms_Environment import Four_Rooms_Environment
 from agents.Trainer import Trainer
 from utilities.data_structures.Config import Config
@@ -6,8 +6,8 @@ from utilities.data_structures.Config import Config
 config = Config()
 config.seed = 1
 
-height = 15
-width = 15
+height = 6
+width = 6
 random_goal_place = False
 num_possible_states = (height * width) ** (1 + 1*random_goal_place)
 embedding_dimensions = [[num_possible_states, 20]]
@@ -154,7 +154,7 @@ config.hyperparameters = {
 if __name__== '__main__':
 
 
-    AGENTS = [DDQN] #DIAYN] # A3C] #SNN_HRL] #, DDQN]
+    AGENTS = [DQN] #DIAYN] # A3C] #SNN_HRL] #, DDQN]
     trainer = Trainer(config, AGENTS)
     trainer.run_games_for_agents()
 
